@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jafra Mexico - Mas Vendidos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Montserrat', Arial, sans-serif; background:#fff;}
+    header {background:linear-gradient(90deg, #DF2929 0%, #6D1649 100%); color:#fff; padding:3rem 1rem; text-align:center; box-shadow: 0 4px 15px rgba(223, 41, 41, 0.3);}
+    .lema {font-size:2.5rem; font-weight: 700; letter-spacing:.04em; text-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+    .productos {display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:3rem 1rem; background:linear-gradient(135deg, #f9f9f9 0%, #f5f5f5 100%);}
+    .card {background:#fff; border-radius:1.2rem; overflow:hidden; box-shadow:0 4px 16px rgba(109, 22, 73, 0.1); width:320px; display:flex; flex-direction:column; align-items:center; transition:transform 0.3s; cursor:pointer;}
+    .card:hover {transform: translateY(-8px); box-shadow: 0 8px 25px rgba(109, 22, 73, 0.2);}
+    .card img {width:100%; height:250px; object-fit:cover;}
+    .card-content {padding: 1.2rem; text-align:center; display:flex; flex-direction:column; flex-grow:1;}
+    .nombre {font-size:1.25rem; font-weight:700; color:#DF2929; margin-bottom: 0.5rem;}
+    .descripcion {color:#666; font-size:0.95rem; margin-bottom:1rem; flex-grow:1;}
+    .acciones {display:flex; gap:.8rem; width:100%;}
+    .btn {background:#DF2929; color:#fff; border:none; padding: 0.7rem 1rem; border-radius:.5rem; font-size:0.95rem; cursor:pointer; font-weight:600; transition:all 0.3s; flex:1; text-decoration:none; display:flex; align-items:center; justify-content:center;}
+    .btn:hover {background:#6D1649; transform: scale(1.02);}
+    .btn.secondary {background:#6D1649;}
+    .btn.secondary:hover {background:#DF2929;}
+    .modal-bg {display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:10; padding:1rem;}
+    .modal-bg.activo {display:flex;}
+    .modal {background:#fff; padding:2.5rem; border-radius:1.5rem; max-width:500px; width:100%;}
+    .modal .cerrar {float:right; font-size:1.8rem; cursor:pointer; color:#DF2929; font-weight:700;}
+    .modal h2 {color:#6D1649; margin:0 0 1rem 0; font-size:1.5rem;}
+    .modal-beneficios {margin:1.5rem 0;}
+    .modal-beneficios h3 {color:#DF2929; font-size:1.1rem; margin-bottom:0.8rem;}
+    .modal-beneficios ul {margin:0 0 1.5rem 1.5rem;}
+    .modal-beneficios li {color:#555; margin-bottom:0.6rem;}
+    .modal-youtube {margin-top:1.5rem; padding-top:1.5rem; border-top:2px solid #DF2929;}
+    .modal-youtube a {display:inline-block; background:#FF0000; color:#fff; padding:0.8rem 1.5rem; border-radius:0.4rem; text-decoration:none; font-weight:600;}
+    .footer {background:#6D1649; color:#DF2929; padding:2.5rem 1rem; text-align:center;}
+    .footer-lema {font-size:1.2rem; font-weight:700; margin-bottom:1rem;}
+    .footer a {color:#fff; font-weight:700; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="lema">La Libertad de ser tu</div>
+  </header>
+
+  <main>
+    <section class="productos">
+      <!-- PRODUCTO 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1590080876/skincare-product.jpg?w=400" alt="Royal Jelly Milk Balm" />
+        <div class="card-content">
+          <div class="nombre">Royal Jelly Milk Balm</div>
+          <div class="descripcion">Nutricion profunda y suavidad incomparable para tu piel.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(0)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" alt="Royal Almond Body Oil" />
+        <div class="card-content">
+          <div class="nombre">Royal Almond Body Oil</div>
+          <div class="descripcion">Famoso aceite de almendra para piel radiante y suave.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(1)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400" alt="Cranberry Crush Hand Cream" />
+        <div class="card-content">
+          <div class="nombre">Cranberry Crush Hand Cream</div>
+          <div class="descripcion">Hidrata manos al instante, aroma frutal delicioso.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(2)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 4 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1556645321-14692c91d3a4?w=400" alt="Royal Jelly Facial" />
+        <div class="card-content">
+          <div class="nombre">Royal Jelly Facial</div>
+          <div class="descripcion">Refuerza juventud y luminosidad en tu rostro.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(3)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 5 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1589254065264-531b11f91405?w=400" alt="Labial Liquido Beauty" />
+        <div class="card-content">
+          <div class="nombre">Labial Liquido Beauty</div>
+          <div class="descripcion">Color intenso y duracion extrema todo el dia.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(4)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 6 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400" alt="Adorisse Eau de Parfum" />
+        <div class="card-content">
+          <div class="nombre">Adorisse Eau de Parfum</div>
+          <div class="descripcion">Fragancia seductora, femenina y super duradera.</div>
+          <div class="acciones">
+            <button class="btn" onclick="abrirModal(5)">Mas Informacion</button>
+            <a class="btn secondary" href="https://wa.me/525527501119" target="_blank">Compra Ya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODALS -->
+  <div class="modal-bg" id="modal-bg">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-lema">La Libertad de ser tu</div>
+      <div>Contactanos: WhatsApp <a href="https://wa.me/525527501119" target="_blank">+525527501119</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const modales = [
+      {
+        nombre: "Royal Jelly Milk Balm",
+        beneficios: [
+          "Hidrata intensamente hasta 48h.",
+          "Rejuvenece e ilumina la piel.",
+          "Contiene Jalea Real y vitamina E.",
+          "Aroma elegante y textura sedosa."
+        ],
+        link: "https://www.youtube.com/watch?v=jiySawTUQyw"
+      },
+      {
+        nombre: "Royal Almond Body Oil",
+        beneficios: [
+          "Nutricion profunda con aceite de almendra.",
+          "Rapida absorcion y cero sensacion grasosa.",
+          "Ideal para masaje relajante y aromaterapia."
+        ],
+        link: "https://www.youtube.com/watch?v=KFhhzaBjoag"
+      },
+      {
+        nombre: "Cranberry Crush Hand Cream",
+        beneficios: [
+          "Hidratacion intensa para tus manos.",
+          "Aroma a arandano fresco.",
+          "No deja sensacion pegajosa."
+        ],
+        link: "https://www.youtube.com/watch?v=HfJ19swVako"
+      },
+      {
+        nombre: "Royal Jelly Facial",
+        beneficios: [
+          "Reduce signos de la edad.",
+          "Aporta luminosidad y firmeza.",
+          "Formulado para todo tipo de piel."
+        ],
+        link: "https://www.youtube.com/watch?v=_w5YKIe0-hE"
+      },
+      {
+        nombre: "Labial Liquido Beauty",
+        beneficios: [
+          "Color vibrante y duradero.",
+          "Textura ligera y comoda.",
+          "No reseca los labios."
+        ],
+        link: "https://www.youtube.com/watch?v=AZxAMkcnbR4"
+      },
+      {
+        nombre: "Adorisse Eau de Parfum",
+        beneficios: [
+          "Fragancia elegante y sofisticada.",
+          "Larga duracion para todo el dia.",
+          "Notas florales y frutales exclusivas."
+        ],
+        link: "https://www.youtube.com/watch?v=71hMP0BQmR4"
+      }
+    ];
+
+    function abrirModal(idx) {
+      const m = modales[idx];
+      const html = `<span class='cerrar' onclick='cerrarModal()'>x</span>
+        <h2>${m.nombre}</h2>
+        <div class="modal-beneficios">
+          <h3>Beneficios clave:</h3>
+          <ul>${m.beneficios.map(b=>'<li>'+b+'</li>').join('')}</ul>
+        </div>
+        <div class="modal-youtube">
+          <a href="${m.link}" target="_blank">Ver tutorial en YouTube</a>
+        </div>`;
+      document.getElementById('modal-content').innerHTML = html;
+      document.getElementById('modal-bg').classList.add('activo');
+    }
+    function cerrarModal() {
+      document.getElementById('modal-bg').classList.remove('activo');
+    }
+    document.getElementById('modal-bg').addEventListener('click', function(e){
+      if(e.target.id === 'modal-bg') cerrarModal();
+    });
+  </script>
+</body>
+</html>
